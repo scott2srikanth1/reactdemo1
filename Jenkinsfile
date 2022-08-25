@@ -5,13 +5,16 @@ node {
 
     stage("Docker build"){
         sh 'docker version'
-        sh 'docker build -t demo_demo .'
+        sh 'docker build -t mydemo .'
         sh 'docker image list'
-        sh 'docker tag demo_demo scott2srikanth/demo_demo:latest'
+        sh 'docker tag mydemo scott2srikanth/mydemo:latest'
     }
+    
 
     stage("Push Image to Docker Hub"){
-        sh 'docker login -u scott2srikanth -p ******'
-        sh 'docker push  scott2srikanth/demo_demo:latest'
+        withCredentials([string(credentialsId: 'dockerhub', variable: 'password')]) {
+            sh 'docker login -u scott2srikanth -p '${password}
+        }
+        sh 'docker push  scott2srikanth/mydemo:latest'
     }
 }
