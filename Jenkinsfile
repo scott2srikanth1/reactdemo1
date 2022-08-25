@@ -19,4 +19,8 @@ node {
     stage("Push Image to Docker Hub"){
         sh 'docker push  scott2srikanth/mydemo:latest'
     }
+
+    stage("kubernetes deployment"){
+        sh 'kubectl apply -f mykube.yaml'
+    }
 }
