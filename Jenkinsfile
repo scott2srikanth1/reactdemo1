@@ -10,7 +10,9 @@ node {
         sh 'docker tag mydemo scott2srikanth/mydemo:latest'
     }
 
-    withCredentials([string(credentialsId: 'dockerhub', variable: 'password')]) {
+
+
+    withCredentials([usernamePassword(credentialsId: 'dockerhub', variable: 'password')]) {
         sh 'docker login -u scott2srikanth -p $password'
     }
     
