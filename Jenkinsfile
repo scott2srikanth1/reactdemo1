@@ -9,12 +9,13 @@ node {
         sh 'docker image list'
         sh 'docker tag mydemo scott2srikanth/mydemo:latest'
     }
+
+    withCredentials([string(credentialsId: 'dockerhub', variable: 'password')]) {
+        sh 'docker login -u scott2srikanth -p $password'
+    }
     
 
     stage("Push Image to Docker Hub"){
-        withCredentials([string(credentialsId: 'dockerhub', variable: 'password')]) {
-            sh 'docker login -u scott2srikanth -p '${password}
-        }
         sh 'docker push  scott2srikanth/mydemo:latest'
     }
 }
