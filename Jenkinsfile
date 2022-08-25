@@ -1,6 +1,6 @@
 node {
     stage("Git Clone"){
-        git branch: 'main', credentialsId: 'GIT_HUB_CREDENTIALS', url: 'https://github.com/scott2srikanth1/docker_demo'
+        git branch: 'main', credentialsId: 'GIT_HUB_CREDENTIALS', url: 'https://github.com/scott2srikanth1/reactdemo1'
     }
 
     stage("Docker build"){
