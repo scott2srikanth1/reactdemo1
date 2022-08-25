@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: myreact-container
-        image: scott2srikanth/myreact:latest
+        image: scott2srikanth/mydemo:latest
         ports:
         - containerPort: 3000
         
