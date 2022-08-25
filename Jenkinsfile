@@ -11,8 +11,7 @@ node {
     }
 
 
-
-    withCredentials([usernamePassword(credentialsId: 'dockerhub', variable: 'password')]) {
+    withCredentials([string(credentialsId: 'abc', variable: 'password')]) {
         sh 'docker login -u scott2srikanth -p $password'
     }
     
